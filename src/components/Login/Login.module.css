@@ -1,0 +1,45 @@
+
+* {
+    margin: 0px 0px;
+}
+
+
+.inputTag {
+    height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    background-color: #ff2058;
+    max-width: 550px;
+    margin: auto;
+    margin-top: 10rem;
+    flex-direction: column;
+}
+
+.inputTag input {
+    border-radius: 5px;
+    margin-left: 5px;
+    margin: 2px 2px;
+}
+
+/* .username {
+    margin: 2px 2px;
+}
+
+.password {
+    margin: 2px 2px;
+} */
+.password input {
+    margin-left: 5px;
+}
+
+.submitBtn input {
+    margin-top: 10px;
+    margin-left: 45%;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid white;
+    background: gray;
+    width: fit-content;
+}
