@@ -7,7 +7,7 @@ export const FirebaseContext = createContext({
     signUpUser: (username, password) => {}
 });
 
-export default FirebaseProvider => {
+export default props => {
 
     const firebaseConfig = {
         apiKey: "AIzaSyD9xX6tXH9PsDHTXcpghv5ZRBzOVBmnS0U",
@@ -22,31 +22,40 @@ export default FirebaseProvider => {
 
     const auth = getAuth(firebaseApp);
 
-    const signUpNewUser = (email, password) => {
-        createUserWithEmailAndPassword(auth, email, password)
-        .then ((userCredential) => {
-            console.log("Signed in");
-        })
-        .catch ((error) => {
-            console.log(error);
-        })
+    const signUpNewUser = async (email, password) => {
+        return createUserWithEmailAndPassword(auth, email, password);
+        // try {
+        //     const response = await createUserWithEmailAndPassword(auth, email, password);
+        //     const token = await response.user.getIdToken();
+        //     console.log("This is the token: ", token);
+        //     return true;
+        // } catch (error) {
+        //     console.log("ERROR: ", error);
+        //     return false;
+        // }
     }
 
-    const signInUser = (email, password) => {
-        signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            console.log("Signed in");
-        })
-        .catch ((error) => {
-            console.log(error);
-        })
+    const signInUser = async (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password);
+        // try {
+        //     const response = await signInWithEmailAndPassword(auth, email, password);
+        //     const token = await response.user.getIdToken();
+        //     console.log("Response: ", response);
+        //     console.log("Token for signin: ", token);
+        //     return true;
+        // } catch (error) {
+        //     alert(error.message);
+        //     console.log("ERROR: ", error);
+        //     return false;
+        // }
+        
     }
 
     return (
         <FirebaseContext.Provider 
-        value = {{loginUser: signInUser, signUpUser: signUpNewUser}}
+            value={{ loginUser: signInUser, signUpUser: signUpNewUser}}
         >
-            {FirebaseProvider.children}
+            {props.children}
         </FirebaseContext.Provider>
     );
 }

@@ -42,4 +42,6 @@
     border: 1px solid white;
     background: gray;
     width: fit-content;
+    /* display: flex; */
+    flex-direction: row;
 }
