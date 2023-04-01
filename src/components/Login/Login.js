@@ -17,11 +17,11 @@ const Login = props => {
         if (event.nativeEvent.submitter.value === "Login") {
             authVerification.loginUser(username, password)
             .then((code) => {
-                console.log("Logged in");
+                console.log("Logged in", code);
                 navigate("/home");
             })
             .catch((error) => {
-                console.log("Problem logging in");
+                console.log("Problem logging in", error);
                 alert(error.message);
                 setPassword('');
                 setUsername('');
@@ -29,11 +29,11 @@ const Login = props => {
         }
         else {
             authVerification.signUpUser(username, password)
-            .then (() => {
-                console.log("Signed up successfully");
+            .then ((code) => {
+                console.log("Signed up successfully", code);
             })
             .catch((error) => {
-                console.log("Problem with signing up");
+                console.log("Problem with signing up", error);
                 alert(error.message);
                 setPassword('');
                 setUsername('');
@@ -46,15 +46,15 @@ const Login = props => {
             <form onSubmit={loginCheck}>
                 <div className={classes.username}>
                     <label> Username: </label>
-                    <input id="username"
-                        type="text" 
+                    <input
+                        type="text"
                         value={username} 
                         onChange={(e) => setUsername(e.target.value)}>
                     </input>
                 </div>
                 <div className={classes.password}>
                     <label> Password: </label>
-                    <input id="password"
+                    <input
                         type= "password" 
                         value={password} 
                         onChange={(e) => setPassword(e.target.value)}>

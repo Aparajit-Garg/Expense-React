@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
 
 export const FirebaseContext = createContext({
+    monthlyBudget : null,
     loginUser: (username, password) => {},
     signUpUser: (username, password) => {}
 });
@@ -53,7 +54,7 @@ export default props => {
 
     return (
         <FirebaseContext.Provider 
-            value={{ loginUser: signInUser, signUpUser: signUpNewUser}}
+            value={{ monthlyBudget: 10000, loginUser: signInUser, signUpUser: signUpNewUser}}
         >
             {props.children}
         </FirebaseContext.Provider>
